@@ -19,8 +19,12 @@ fi
 # File log untuk menyimpan pesan error 404
 log_file="/path/to/error.log"
 
+# URL halaman "not found"
+not_found_url="http://localhost/not_found.html"
+
 # Membaca file access.log secara real-time dan memeriksa error 404
-tail -n0 -f "$access_log" | while read line; do
+tail -f "$access_log" | while read line; do
+    echo "Line: $line"
     if echo "$line" | grep -q ' 404 '; then
         echo "Error 404 terdeteksi!"
         current_date=$(date +"%Y-%m-%d %H:%M:%S")
@@ -31,5 +35,8 @@ tail -n0 -f "$access_log" | while read line; do
 
         # Kirim notifikasi ke Telegram
         send_telegram_message "$error_message"
+
+        # Mengarahkan ke halaman "not found"
+        curl -s -L "$not_found_url" -o /dev/null
     fi
 done
