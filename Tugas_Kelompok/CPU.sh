@@ -23,7 +23,7 @@ get_cpu_usage(){
 while true; do
 	cpu_usage=$(get_cpu_usage)
 	current_date=$(date +"%Y-%m-%d %H:%M:%S")
-	echo "[$current_date] Penggunan CPU : $cpu_usage%" >> $log_file
+	echo "[$current_date] Penggunan CPU : $cpu_usage%" >> "$log_file"
 	# Delay 5 detik
 	sleep 5
 
