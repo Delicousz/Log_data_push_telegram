@@ -24,8 +24,8 @@ while true; do
 	cpu_usage=$(get_cpu_usage)
 	current_date=$(date +"%Y-%m-%d %H:%M:%S")
 	echo "[$current_date] Penggunan CPU : $cpu_usage%" >> "$log_file"
-	# Delay 5 detik
-	sleep 5
+	# Delay 3 detik
+	sleep 3
 
 # Pengkondisian jika penggunaan CPU >50% maka akan ada pemberitahuan
 if [ "$cpu_usage" -ge "5" ]; then
